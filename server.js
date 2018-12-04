@@ -16,6 +16,11 @@ var h2en = "</h2>"
 var br = "<br>"
 var col = "col";
 
+var fcol;
+var fcolhtmlst;
+var fcolhist;
+var htmldatahist;
+
 var fcol1 = "col1.json";
 var fcol1htmlst = "website/status1.html";
 var fcol1hist = "website/status1-log.html";
@@ -117,20 +122,20 @@ function sendIdCol(request, response){
     response.send(reply);
 }
 
-app.get("/disp/:idcol", sendIdCol);
+app.get("/disp/:idcol?/:analista?", sendIdColDisp);
 
-function sendIdCol(request, response){
+function sendIdColDisp(request, response){
     
     var idcol = request.params.idcol;
+    var analista = request.params.analista;
     var filenameDisp = "website/status" + idcol + ".html";
-    disponHTML =  divst+col+idcol+diven+h2st+"Disponivel"+h2en;
+    disponHTML =  divst+col+idcol+diven+h2st+"Disponivel"+h2en+br+analista;
     fs.writeFile(filenameDisp, disponHTML, finished)
+    reply = { msg: "Gravado"  }
     function finished(err){
         console.log("Updated file!");
     }
-        var reply = {
-            msg: "Status disponivel atualizado!"
-        }
+        //reply = { msg: "Status disponivel atualizado!" }
     
     
     response.send(reply);
@@ -188,28 +193,45 @@ function addStatus(request, response){
         if (col == 1) {
             fileCol = fcol1;
             col = "col"+col;
-            col1();
+            fcolhtmlst = fcol1htmlst;
+            htmldatahist = htmldatahist1;
+            fcolhist = fcol1hist;
+            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist)
         }
         if (col == 2) {
             fileCol = fcol2;
             col = "col"+col;
-            col2();
+            fcolhtmlst = fcol2htmlst;
+            htmldatahist = htmldatahist2;
+            fcolhist = fcol2hist;
+            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist)
         }
         if (col == 3) {
             fileCol = fcol3;
             col = "col"+col;
-            col3();
+            fcolhtmlst = fcol3htmlst;
+            htmldatahist = htmldatahist3;
+            fcolhist = fcol3hist;
+            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist)
         }
         if (col == 4) {
             fileCol = fcol4;
             col = "col"+col;
+            fcolhtmlst = fcol4htmlst;
+            htmldatahist = htmldatahist4;
+            fcolhist = fcol4hist;
+            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist)
         }
         if (col == 5) {
             fileCol = fcol5;
             col = "col"+col;
+            fcolhtmlst = fcol5htmlst;
+            htmldatahist = htmldatahist5;
+            fcolhist = fcol5hist;
+            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist)
         }
 
-        function col1(){
+        function gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist){
             //write json file
             var lojasJson = JSON.stringify(lojas, null, 2);
             console.log(lojasJson);
@@ -217,55 +239,17 @@ function addStatus(request, response){
 
             //write html file
             var htmldatatemp = divst+col+diven+h2st+loja+h2en+br+dia+br+hora+br+analista+br+nl;
-            fs.writeFile(fcol1htmlst, htmldatatemp, finished)
+            fs.writeFile(fcolhtmlst, htmldatatemp, finished)
             
-            var lojasHTML = htmldatahist1 + htmldatatemp;  
-            fs.writeFile(fcol1hist, lojasHTML, finished)
+            var lojasHTML = htmldatahist + htmldatatemp;  
+            fs.writeFile(fcolhist, lojasHTML, finished)
             function finished(err){
                 console.log("Written file!");
             }
-            var reply = {
+            reply = {
             msg: "Status adicionado!"
             }
-        }
-        function col2(){
-            //write json file
-            var lojasJson = JSON.stringify(lojas, null, 2);
-            console.log(lojasJson);
-            fs.writeFile(fileCol,lojasJson,finished);
-
-            //write html file
-            var htmldatatemp = divst+col+diven+h2st+loja+h2en+br+dia+br+hora+br+analista+br+nl;
-            fs.writeFile(fcol2htmlst, htmldatatemp, finished)
-            
-            var lojasHTML = htmldatahist2 + htmldatatemp;  
-            fs.writeFile(fcol2hist, lojasHTML, finished)
-            function finished(err){
-                console.log("Written file!");
-            }
-            var reply = {
-            msg: "Status adicionado!"
-            }
-        }
-        function col3(){
-            //write json file
-            var lojasJson = JSON.stringify(lojas, null, 2);
-            console.log(lojasJson);
-            fs.writeFile(fileCol,lojasJson,finished);
-
-            //write html file
-            var htmldatatemp = divst+col+diven+h2st+loja+h2en+br+dia+br+hora+br+analista+br+nl;
-            fs.writeFile(fcol3htmlst, htmldatatemp, finished)
-            
-            var lojasHTML = htmldatahist3 + htmldatatemp;  
-            fs.writeFile(fcol3hist, lojasHTML, finished)
-            function finished(err){
-                console.log("Written file!");
-            }
-            var reply = {
-            msg: "Status adicionado!"
-            }
-        }
+        }       
     
     }
     response.send(reply);

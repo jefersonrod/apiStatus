@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Status de atendimentos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body onload="updteInicial()">
+    <div class="container" >
+        <div class="div-header">
+                <h3>Status de atendimentos</h3>
+                <button name="refresh" onclick="location.reload();">Atualizar</button>
+                <p id="timeupdate"></p>
+        </div>
+        <div class="row" id="statusatd">
+            
+                <div  class="column names">IVAN</div>
+                <div  class="column names">JEFERSON</div>
+                <div  class="column names">LUIZ</div>
+                <div  class="column names">RENER</div>
+                <div  class="column names">THIAGO</div>
+                <div  class="column" w3-include-html="status1.html"></div>
+                <div  class="column" w3-include-html="status2.html"></div>
+                <div  class="column" w3-include-html="status3.html"></div>
+                <div  class="column" w3-include-html="status4.html"></div>
+                <div  class="column" w3-include-html="status5.html"></div>
+        </div>
+        
+        
+    </div> 
+
+    <div class="divTable" style="width: 20%;">
+            <div class="divTableBody">
+                <div class="divTableRow">
+                    <div class="divTableCell"><iframe src="status1-log.html" frameborder="0" ></iframe></div>
+                    <div class="divTableCell"><iframe src="status2-log.html" frameborder="0" ></iframe></div>
+                    <div class="divTableCell"><iframe src="status3-log.html" frameborder="0" ></iframe></div>
+                    <div class="divTableCell"><iframe src="status4-log.html" frameborder="0" ></iframe></div>
+                    <div class="divTableCell"><iframe src="status5-log.html" frameborder="0" ></iframe></div>
+                </div>
+            </div>
+        </div>             
+    </div>          
+</body>
+</html>

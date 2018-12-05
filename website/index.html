@@ -1,50 +1,86 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Status de atendimentos</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Main JS/CS -->
+    <!-- link rel="stylesheet" type="text/css" media="screen" href="main.css" /-->
     <script src="main.js"></script>
-</head>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>    
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+<body>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
 
 <body onload="updteInicial()">
     <div class="container" >
         <div class="div-header">
-                <h3>Status de atendimentos</h3>
-                <button name="refresh" onclick="location.reload();">Atualizar</button>
-                <p id="timeupdate"></p>
+            <br>
+                <h1>Status de atendimentos</h1>
+                <button class="btn btn-info" name="refresh" onclick="location.reload();">Atualizar</button><br>
+                <p class="alert alert-success" id="timeupdate"></p>
         </div>
-        <div class="row" id="statusatd">
-                <div  class="column names">IVAN</div>
-                <div  class="column names">JEFERSON</div>
-                <div  class="column names">LUIZ</div>
-                <div  class="column names">RENER</div>
-                <div  class="column names">THIAGO</div>
+        <div class="row">
+            <div class="col">
                 <div  class="column" w3-include-html="status1.html"></div>
+            </div>
+            <div class="col">
                 <div  class="column" w3-include-html="status2.html"></div>
+            </div>
+            <div class="col">
                 <div  class="column" w3-include-html="status3.html"></div>
+            </div>
+            <div class="col">
                 <div  class="column" w3-include-html="status4.html"></div>
+            </div>
+            <div class="col">
                 <div  class="column" w3-include-html="status5.html"></div>
+            </div>
+        </div> 
+        <br>
+        <h4>Histórico</h4>
+            <br>
+        <div class="row">            
+            <div class="col">
+                <h5>Ivan</h5>                
+                <iframe width="200" class="embed-responsive-item" src="status1-log.html"></iframe>
+            </div>
+            <div class="col">
+                <h5>Jeferson</h5>
+                <iframe width="200" class="embed-responsive-item" src="status2-log.html"></iframe>                
+            </div>
+            <div class="col">
+                <h5>Luiz</h5>                
+                <iframe width="200" class="embed-responsive-item" src="status3-log.html"></iframe>                
+            </div>
+            <div class="col">
+                <h5>Rener</h5>                
+                <iframe width="200" class="embed-responsive-item" src="status4-log.html"></iframe>                
+            </div>
+            <div class="col">
+                <h5>Thiago</h5>                
+                <iframe width="200" class="embed-responsive-item" src="status5-log.html"></iframe>                
+            </div>
         </div>
-        
+        <div class="Author"></div>
+        <br>
+            <h6>Desenvolvido por Jeferson R./Disys - 12/2018 - contato: <a href="mailto:t_disys.jeferson.rodrigues@grupoboticario.com.br">t_disys.jeferson.rodrigues@grupoboticario.com.br</a></h6> 
+        </div>
         
     </div> 
 
-    <div class="divTable" style="width: 20%;">
-            <div class="divTableBody">
-                <div class="divTableRow">
-                    <div class="divTableCell"><iframe src="status1-log.html" frameborder="0" ></iframe></div>
-                    <div class="divTableCell"><iframe src="status2-log.html" frameborder="0" ></iframe></div>
-                    <div class="divTableCell"><iframe src="status3-log.html" frameborder="0" ></iframe></div>
-                    <div class="divTableCell"><iframe src="status4-log.html" frameborder="0" ></iframe></div>
-                    <div class="divTableCell"><iframe src="status5-log.html" frameborder="0" ></iframe></div>
-                </div>
-            </div>
-        </div>             
-    </div>          
+   
 </body>
 </html>

@@ -100,8 +100,6 @@ p {
 .names{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: Orange;
-    text-align: center;
-
 }
 /* Clear floats after the columns */
 .row:after {

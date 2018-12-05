@@ -287,12 +287,11 @@ function addStatus(request, response){
             console.log(lojasJson);
             fs.writeFile(fileCol,lojasJson,finished);
 
-            //write html file
+            //write status html file
             var htmldatatemp = divCardInicio+corCol+divCardFinal+divCardBody+divTitleInicio+loja+h3Final+pCardTextInicio+dia+br+hora+br+analista+pFinal+divFinal+divFinal;
-            
             fs.writeFile(fcolhtmlst, htmldatatemp, finished)
-            
-            var lojasHTML = htmldatahist + htmldatatemp;  
+            //write history html file with new line at the end
+            var lojasHTML = htmldatahist + htmldatatemp + nl;  
             fs.writeFile(fcolhist, lojasHTML, finished)
             function finished(err){
                 console.log("Written file!");

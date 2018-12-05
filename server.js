@@ -1,3 +1,8 @@
+//libs to install
+//npm install -g nodemon
+//npm install express
+
+
 var lojas = {};
 var col;
 lojas[col];
@@ -7,7 +12,8 @@ console.log("Server running...");
 var fs = require("fs");
 //var rawdata = fs.readFileSync("lojas.json");
 //var lojasJson = JSON.parse(rawdata);
-//nome de arquivos de colunas
+
+//variaveis de tags de colunas html
 var nl = "\n";
 var divst = "<div id=\"";
 var diven = "\">";
@@ -15,6 +21,28 @@ var h2st ="<h2>"
 var h2en = "</h2>"
 var br = "<br>"
 var col = "col";
+//Bootstrap 4 reference
+var b4="<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css\" integrity=\"sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO\" crossorigin=\"anonymous\">";
+//BootStrap 4 Status
+var divCardInicio = "<div class=\"card text-white ";
+var corCol1 = "bg-primary";
+var corCol2 = "bg-secondary";
+var corCol3 = "bg-success";
+var corCol4 = "bg-info";
+var corCol5 = "bg-warning";
+var corCol;
+var divCardFinal = "  mb-3\">";
+var divCardBody = "<div class=\"card-body\">";
+var divTitleInicio = "<h3 class=\"card-title\">";
+var h3Final = "</h3>";
+var pCardTextInicio = "<p class=\"card-text\">";
+var pFinal = "</p>";
+var divFinal = "</div>";
+//BootStrap 4 Disponivel
+var divClassCard = "<div class=\"card\">";
+var h5CardDisp = "<h5 class=\"card-header\">Disponivel</h5>";
+var h5Final = "</h5>";
+
 
 var fcol;
 var fcolhtmlst;
@@ -47,47 +75,66 @@ if (fs.existsSync(fcol1hist)) {
     
     htmldatahist1 = fs.readFileSync(fcol1hist, 'utf8');
     //var htmlLog = HTMLDocument.parse(rawdata1);
-    console.log(htmldatahist1);    
+    console.log(fcol1hist + " found");    
 }else{
+    fs.writeFile(fcol1hist,b4);
+    htmldatahist1 = fs.readFileSync(fcol1hist, 'utf8');
+    console.log("Criado novo arquivo de histórico vazio");
     console.log("Não encontrado: "+fcol1hist);
+    
 }
 if (fs.existsSync(fcol2hist)) {
     
     htmldatahist2 = fs.readFileSync(fcol2hist, 'utf8');
     //var htmlLog = HTMLDocument.parse(rawdata1);
-    console.log(htmldatahist2);    
+    console.log(fcol2hist + " found");    
 }else{
+    fs.writeFile(fcol2hist,b4);
+    htmldatahist2 = fs.readFileSync(fcol2hist, 'utf8');
+    console.log("Criado novo arquivo de histórico vazio");
     console.log("Não encontrado: "+fcol2hist);
 }
 if (fs.existsSync(fcol3hist)) {
     
     htmldatahist3 = fs.readFileSync(fcol3hist, 'utf8');
     //var htmlLog = HTMLDocument.parse(rawdata1);
-    console.log(htmldatahist3);    
+    console.log(fcol3hist +  " found");    
 }else{
+    fs.writeFile(fcol3hist,b4);
+    htmldatahist3 = fs.readFileSync(fcol3hist, 'utf8');
+    console.log("Criado novo arquivo de histórico vazio");
     console.log("Não encontrado: "+fcol3hist);
 }
 if (fs.existsSync(fcol4hist)) {
     
     htmldatahist4 = fs.readFileSync(fcol4hist, 'utf8');
     //var htmlLog = HTMLDocument.parse(rawdata1);
-    console.log(htmldatahist4);    
+    console.log(fcol4hist + " found");    
 }else{
+    fs.writeFile(fcol4hist,b4);
+    htmldatahist4 = fs.readFileSync(fcol4hist, 'utf8');
+    console.log("Criado novo arquivo de histórico vazio");
     console.log("Não encontrado: "+fcol4hist);
 }
 if (fs.existsSync(fcol5hist)) {
     
     htmldatahist5 = fs.readFileSync(fcol5hist, 'utf8');
     //var htmlLog = HTMLDocument.parse(rawdata1);
-    console.log(htmldatahist5);    
+    console.log(fcol5hist + " found");    
 }else{
+    fs.writeFile(fcol4hist,b4);
+    htmldatahist5 = fs.readFileSync(fcol5hist, 'utf8');
+    console.log("Criado novo arquivo de histórico vazio");
     console.log("Não encontrado: "+fcol5hist);
 }
-
 
 var express = require("express");
 var app = express();
 var server = app.listen(3000, listening);
+
+function CreateHistory(colunaNum){
+    fs.writeFile(filenameDisp, disponHTML, finished)
+}
 
 function listening(){
     console.log("Listening...");
@@ -105,7 +152,8 @@ function sendStatus(request, response){
 app.get("/lojas", sendAll);
 
 function sendAll(request, response){
-    response.send(lojasJson);
+    var allLojas = htmldatahist1 + htmldatahist2 + htmldatahist3 + htmldatahist4 + htmldatahist5
+    response.send(allLojas);
 }
 
 
@@ -128,23 +176,20 @@ function sendIdColDisp(request, response){
     
     var idcol = request.params.idcol;
     var analista = request.params.analista;
-    var filenameDisp = "website/status" + idcol + ".html";
-    disponHTML =  divst+col+idcol+diven+h2st+"Disponivel"+h2en+br+analista;
+    var filenameDisp = "website/status" + idcol + ".html";    
+    disponHTML = divClassCard+h5CardDisp+divCardBody+pCardTextInicio+analista+pFinal+divFinal+divFinal
     fs.writeFile(filenameDisp, disponHTML, finished)
-    reply = { msg: "Gravado"  }
+    reply = { msg: "Status atualizado para "+analista  }
     function finished(err){
+        console.log("error: "+err);
+        console.log(reply);
         console.log("Updated file!");
     }
         //reply = { msg: "Status disponivel atualizado!" }
-    
-    
+        
     response.send(reply);
 }
 
-
-function sendAll(request, response){
-    response.send(lojasJson);
-}
 
 app.get("/add/:col?/:analista?/:loja?/:dia?/:hora?", addStatus);
 app.get("/add", errorAddStatus);
@@ -196,7 +241,8 @@ function addStatus(request, response){
             fcolhtmlst = fcol1htmlst;
             htmldatahist = htmldatahist1;
             fcolhist = fcol1hist;
-            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist)
+            corCol = corCol1;
+            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist,corCol)
         }
         if (col == 2) {
             fileCol = fcol2;
@@ -204,7 +250,8 @@ function addStatus(request, response){
             fcolhtmlst = fcol2htmlst;
             htmldatahist = htmldatahist2;
             fcolhist = fcol2hist;
-            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist)
+            corCol = corCol2;
+            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist,corCol)
         }
         if (col == 3) {
             fileCol = fcol3;
@@ -212,7 +259,8 @@ function addStatus(request, response){
             fcolhtmlst = fcol3htmlst;
             htmldatahist = htmldatahist3;
             fcolhist = fcol3hist;
-            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist)
+            corCol = corCol3;
+            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist,corCol)
         }
         if (col == 4) {
             fileCol = fcol4;
@@ -220,7 +268,8 @@ function addStatus(request, response){
             fcolhtmlst = fcol4htmlst;
             htmldatahist = htmldatahist4;
             fcolhist = fcol4hist;
-            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist)
+            corCol = corCol4;
+            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist,corCol)
         }
         if (col == 5) {
             fileCol = fcol5;
@@ -228,17 +277,19 @@ function addStatus(request, response){
             fcolhtmlst = fcol5htmlst;
             htmldatahist = htmldatahist5;
             fcolhist = fcol5hist;
-            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist)
+            corCol = corCol5;
+            gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist,corCol)
         }
 
-        function gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist){
+        function gravaStatus(col,fileCol,loja,analista,dia,hora,fcolhtmlst,htmldatahist,fcolhist,corCol){
             //write json file
             var lojasJson = JSON.stringify(lojas, null, 2);
             console.log(lojasJson);
             fs.writeFile(fileCol,lojasJson,finished);
 
             //write html file
-            var htmldatatemp = divst+col+diven+h2st+loja+h2en+br+dia+br+hora+br+analista+br+nl;
+            var htmldatatemp = divCardInicio+corCol+divCardFinal+divCardBody+divTitleInicio+loja+h3Final+pCardTextInicio+dia+br+hora+br+analista+pFinal+divFinal+divFinal;
+            
             fs.writeFile(fcolhtmlst, htmldatatemp, finished)
             
             var lojasHTML = htmldatahist + htmldatatemp;  

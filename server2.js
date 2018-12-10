@@ -133,6 +133,17 @@ var app = express();
 var server = app.listen(3000, listening);
 
 function gravaHistCol(coluna){
+
+
+    function finished(err){
+        console.log("New empty history file created!");
+    }
+    reply = {
+    msg: "Status vazio foi criado para coluna!"+coluna
+    }
+}
+
+function leHistCol(coluna){
     switch(coluna){
         case 1:
             htmldatahist1 = fs.readFileSync(fcol1hist, 'utf8');

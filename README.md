@@ -8,6 +8,7 @@ apiStatus
 
 Plataform: NodeJS
 Modules: Express
+FrontEnd: BootStrap 4
 Language: Portuguese/Brazil
 
 Scenario: Every analyst have a spreadsheet to fill with informations about the task at the moment, so another team located in another site needs to know the status of tickets. I developed this app to receive an endpoint with ticket number and name of analyst through an url build by Excel VBA function. 

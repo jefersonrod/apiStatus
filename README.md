@@ -41,4 +41,4 @@ So server will response with a message "Status adicionado!" (Added Status)
 
 On the Front end the status is updated automatically, the values submitted are added to history log on column "Histórico" (History)
 
-There is a green button "Atualizar" (Update) on the top left corner to update the status manually, therefore there is a scheduled update every 30 secs.
+There is a green button "Atualizar" (Update) on the top left corner to update the status manually, however there is a scheduled update every 30 secs.

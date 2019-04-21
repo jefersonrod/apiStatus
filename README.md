@@ -17,10 +17,15 @@ http://localhost:3000/add/column/analyst/ticket/date dd/mm/yyyy/hour hh:mm
 
 for example:
 column = 1
+
 analyst = R2D2
+
 ticket = G3434
+
 date = 21/04/2019 encoded to 21%2F04%2F2019
+
 hour = 19:58 encoded to 19%3A58
+
 
 The encoded is necessary to convert special characters "/" and ":", your endpoint must be submitted encoded.
 

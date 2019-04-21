@@ -17,8 +17,8 @@ The application runs on nodejs and listening on port 3000, see example of url be
 http://localhost:3000/add/column/analyst/ticket/date dd/mm/yyyy/hour hh:mm
 
 for example:
-column = 1
 
+column = 1
 analyst = R2D2
 
 ticket = G3434
